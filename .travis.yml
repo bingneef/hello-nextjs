@@ -11,16 +11,17 @@ stages:
 jobs:
   include:
     - stage: test
-      script: yarn test:coveralls
+      script: yarn test
     - script: yarn prettier:check
     - script: yarn lint
     - stage: build
       script: yarn build
     - stage: build docker
-      script: skip
       deploy:
         provider: script
         script: "
-          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-          docker push bingneef/hello-nextjs"
+          tag=$( git describe --abbrev=0 )
+          echo $( docker build -t bingneef/docker-nextjs:$tag . )
+          echo $tag
+          echo $( docker push bingneef/docker-nextjs:$tag )"
         on: branch: master
