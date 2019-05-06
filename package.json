@@ -7,7 +7,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "generate": "plop",
+    "generate": "plop --plopfile generator/plopfile.js",
     "now-build": "next build",
     "storybook": "start-storybook -p 6006 -c .storybook",
     "test": "jest",

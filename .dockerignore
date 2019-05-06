@@ -1,5 +1,4 @@
-*
-!pages
-!src
-!yarn.lock
-!package.json
+node_modules
+.vscode
+.next
+yarn-error.log

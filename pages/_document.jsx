@@ -1,6 +1,8 @@
 import Document, { Head, Main, NextScript } from "next/document";
 import { Provider as StyletronProvider } from "styletron-react";
 
+import Hotjar from "./components/hotjar";
+import GoogleAnalytics from "./components/google-analytics";
 import { styletron } from "../src/services/styletron";
 
 class MyDocument extends Document {
@@ -32,6 +34,9 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
+
+        <Hotjar />
+        <GoogleAnalytics />
       </html>
     );
   }

@@ -1,7 +1,7 @@
 import { styled } from "baseui";
 import { Button, KIND } from "baseui/button";
 
-import Form from "./components/Form";
+import Form from "./components/form";
 
 const Colored = styled("div", ({ $theme }: any) => ({
   color: $theme.colors.primary
@@ -12,7 +12,9 @@ function Sample({ title }: Props) {
     <>
       <Colored>{title}</Colored>
       <Form />
-      <Button kind={KIND.secondary}>Secondary</Button>
+      <Button test-id="button" kind={KIND.secondary}>
+        Secondary
+      </Button>
     </>
   );
 }

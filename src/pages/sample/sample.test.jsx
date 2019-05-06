@@ -13,11 +13,13 @@ describe("Sample", () => {
 
   it("matches the snapshot", () => {
     const component = renderer.create(<Sample title="Sample" />);
+
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 
     const rootInstance = component.root;
-    const $button = rootInstance.findByType("button");
+    const $button = rootInstance.findByProps({ "test-id": "button" });
+
     expect($button.props.children).toBe("Secondary");
   });
 });

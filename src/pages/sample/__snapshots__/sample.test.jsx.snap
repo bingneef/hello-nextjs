@@ -30,6 +30,7 @@ Array [
     data-baseweb="button"
     disabled={false}
     onClick={[Function]}
+    test-id="button"
   >
     Secondary
   </button>,
