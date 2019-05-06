@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sample matches the snapshot 1`] = `
+Array [
+  <div
+    className=""
+  >
+    Sample
+  </div>,
+  <div>
+    0
+  </div>,
+  <button
+    onClick={[Function]}
+  >
+    +
+  </button>,
+  <button
+    onClick={[Function]}
+  >
+    -
+  </button>,
+  <button
+    onClick={[Function]}
+  >
+    reset
+  </button>,
+  <button
+    className=""
+    data-baseweb="button"
+    disabled={false}
+    onClick={[Function]}
+  >
+    Secondary
+  </button>,
+]
+`;
