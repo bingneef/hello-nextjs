@@ -22,6 +22,6 @@ jobs:
     - stage: build docker
       deploy:
         provider: script
-        script: ./server/test.sh
+        script: bash server/test.sh
         on:
           branch: master
