@@ -24,4 +24,5 @@ jobs:
           echo $( docker build -t bingneef/docker-nextjs:$tag . )
           echo $tag
           echo $( docker push bingneef/docker-nextjs:$tag )"
-        on: branch: master
+        on:
+          branch: master
