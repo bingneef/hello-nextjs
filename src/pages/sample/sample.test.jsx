@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import renderer from "react-test-renderer";
 
 import Sample from "./index.tsx";
+import { equal } from "assert";
 
 describe("Sample", () => {
   it("renders without error", () => {
@@ -21,5 +22,21 @@ describe("Sample", () => {
     const $button = rootInstance.findByProps({ "test-id": "button" });
 
     expect($button.props.children).toBe("Secondary");
+  });
+
+  describe("initialProps", () => {
+    beforeEach(() => {
+      fetch.resetMocks();
+    });
+
+    it("fetches preact stars from github", async () => {
+      const fetchMock = fetch.once(JSON.stringify({ stargazers_count: 2 }));
+
+      const props = await Sample.getInitialProps();
+      expect(props).toEqual({ stars: 2 });
+      expect(fetchMock.mock.calls[0][0]).toBe(
+        "https://api.github.com/repos/bingneef/hello-nextjs"
+      );
+    });
   });
 });

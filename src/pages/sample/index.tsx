@@ -23,7 +23,7 @@ function Sample({ stars, title }: Props) {
 }
 
 Sample.getInitialProps = async () => {
-  const res = await fetch("https://api.github.com/repos/developit/preact");
+  const res = await fetch("https://api.github.com/repos/bingneef/hello-nextjs");
   const json = await res.json();
 
   return { stars: json.stargazers_count };
