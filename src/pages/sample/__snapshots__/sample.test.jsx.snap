@@ -9,7 +9,9 @@ Array [
      - 
     2
   </div>,
-  <div />,
+  <div>
+    0
+  </div>,
   <button
     onClick={[Function]}
   >

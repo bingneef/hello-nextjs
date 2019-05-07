@@ -11,10 +11,12 @@
     "now-build": "next build",
     "storybook": "start-storybook -p 6006 -c .storybook",
     "test": "jest",
+    "test:watch": "jest --watch",
     "test:coveralls": "yarn test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "prettier:check": "prettier --check 'src/**/*.{tsx,ts,js}' 'pages/**/*.{tsx,ts,js}'",
-    "prettier:fix": "prettier --write 'src/**/*.{tsx,ts,js}' 'pages/**/*.{tsx,ts,js}'",
+    "prettier:fix": "prettier --write 'src/**/*.{tsx,ts,js}' 'pages/**/*.{tsx,ts,js}' 'generator/**/*.{ts,js}'",
     "typecheck": "tsc",
+    "check:all": "yarn prettier:check && yarn lint && yarn typecheck && yarn test",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "lint:fix": "yarn lint --fix"
   },

@@ -31,6 +31,6 @@ interface Props {
 
 Counter.defaultProps = {
   counter: 0
-}
+};
 
 export default Counter;
