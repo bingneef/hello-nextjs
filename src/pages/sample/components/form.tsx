@@ -26,7 +26,11 @@ const Counter = createComponent(store, ({ counter }: Props) => {
 });
 
 interface Props {
-  counter: number;
+  counter?: number;
 }
+
+Counter.defaultProps = {
+  counter: 0
+};
 
 export default Counter;

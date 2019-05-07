@@ -26,14 +26,12 @@ Sample.getInitialProps = async () => {
   const res = await fetch("https://api.github.com/repos/developit/preact");
   const json = await res.json();
 
-  console.log(json);
-
   return { stars: json.stargazers_count };
 };
 
 interface Props {
-  title?: string;
   stars?: number;
+  title?: string;
 }
 
 Sample.defaultProps = {
