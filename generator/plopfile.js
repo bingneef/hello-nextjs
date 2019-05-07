@@ -1,3 +1,48 @@
+function generateComponentActions({ pages = false }) {
+  const rootUrl = pages ? "pages" : "components";
+
+  return [
+    {
+      type: "add",
+      path: `../src/${rootUrl}/{{kebabCase name}}/{{kebabCase name}}.tsx`,
+      templateFile: "component/component.tsx.hbs"
+    },
+    {
+      type: "add",
+      path: `../src/${rootUrl}/{{kebabCase name}}/{{kebabCase name}}.test.js`,
+      templateFile: "component/component.test.js.hbs"
+    },
+    {
+      type: "add",
+      path: `../src/${rootUrl}/{{kebabCase name}}/{{kebabCase name}}.module.scss`,
+      templateFile: "component/component.module.scss.hbs"
+    },
+    {
+      type: "add",
+      path: `../src/${rootUrl}/{{kebabCase name}}/index.js`,
+      templateFile: "component/index.js.hbs"
+    },
+    {
+      type: "add",
+      path: `../src/${rootUrl}/index.js`,
+      templateFile: "injectable-index.js.hbs",
+      skipIfExists: true
+    },
+    {
+      type: "append",
+      path: `../src/${rootUrl}/index.js`,
+      pattern: `/* PLOP_INJECT_IMPORT */`,
+      template: `import {{pascalCase name}} from './{{kebabCase name}}';`
+    },
+    {
+      type: "append",
+      path: `../src/${rootUrl}/index.js`,
+      pattern: `/* PLOP_INJECT_EXPORT */`,
+      template: `\t{{pascalCase name}},`
+    }
+  ];
+}
+
 function componentGenerator(plop) {
   plop.setGenerator("component", {
     description: "Create a reusable component",
@@ -8,48 +53,7 @@ function componentGenerator(plop) {
         message: "What is your component name?"
       }
     ],
-    actions: [
-      {
-        type: "add",
-        path: "../src/components/{{pascalCase name}}/{{pascalCase name}}.tsx",
-        templateFile: "Component/Component.tsx.hbs"
-      },
-      {
-        type: "add",
-        path:
-          "../src/components/{{pascalCase name}}/{{pascalCase name}}.test.js",
-        templateFile: "Component/Component.test.js.hbs"
-      },
-      {
-        type: "add",
-        path:
-          "src/components/{{pascalCase name}}/{{pascalCase name}}.module.scss",
-        templateFile: "Component/Component.module.scss.hbs"
-      },
-      {
-        type: "add",
-        path: "../src/components/{{pascalCase name}}/index.js",
-        templateFile: "Component/index.js.hbs"
-      },
-      {
-        type: "add",
-        path: "../src/components/index.js",
-        templateFile: "injectable-index.js.hbs",
-        skipIfExists: true
-      },
-      {
-        type: "append",
-        path: "../src/components/index.js",
-        pattern: `/* PLOP_INJECT_IMPORT */`,
-        template: `import {{pascalCase name}} from './{{pascalCase name}}';`
-      },
-      {
-        type: "append",
-        path: "../src/components/index.js",
-        pattern: `/* PLOP_INJECT_EXPORT */`,
-        template: `\t{{pascalCase name}},`
-      }
-    ]
+    actions: generateComponentActions({ pages: false })
   });
 }
 
@@ -66,14 +70,10 @@ function pageGenerator(plop) {
     actions: [
       {
         type: "add",
-        path: "../pages/{{snakeCase name}}/index.tsx",
-        templateFile: "Page/Page.tsx.hbs"
+        path: "../pages/{{snakeCase name}}.tsx",
+        templateFile: "page/page.tsx.hbs"
       },
-      {
-        type: "add",
-        path: "../pages/{{snakeCase name}}/{{snakeCase name}}.test.js",
-        templateFile: "Page/Page.test.js.hbs"
-      }
+      ...generateComponentActions({ pages: true })
     ]
   });
 }
@@ -91,29 +91,29 @@ function serviceGenerator(plop) {
     actions: [
       {
         type: "add",
-        path: "../src/services/{{pascalCase name}}/{{pascalCase name}}.ts",
-        templateFile: "Service/service.ts.hbs"
+        path: "../src/services/{{kebabCase name}}/{{kebabCase name}}.ts",
+        templateFile: "service/service.ts.hbs"
       },
       {
         type: "add",
-        path: "../src/services/{{pascalCase name}}/{{pascalCase name}}.test.js",
-        templateFile: "Service/service.test.js.hbs"
+        path: "../src/services/{{kebabCase name}}/{{kebabCase name}}.test.js",
+        templateFile: "service/service.test.js.hbs"
       },
       {
         type: "add",
-        path: "../src/services/{{pascalCase name}}/index.js",
+        path: "../src/services/{{kebabCase name}}/index.js",
         templateFile: "injectable-index.js.hbs",
         skipIfExists: true
       },
       {
         type: "append",
-        path: "../src/services/{{pascalCase name}}/index.js",
+        path: "../src/services/{{kebabCase name}}/index.js",
         pattern: `/* PLOP_INJECT_IMPORT */`,
-        template: `import {{pascalCase name}} from './{{pascalCase name}}';`
+        template: `import {{pascalCase name}} from './{{kebabCase name}}';`
       },
       {
         type: "append",
-        path: "../src/services/{{pascalCase name}}/index.js",
+        path: "../src/services/{{kebabCase name}}/index.js",
         pattern: `/* PLOP_INJECT_EXPORT */`,
         template: `\t{{pascalCase name}},`
       },
@@ -152,31 +152,31 @@ function hookGenerator(plop) {
     actions: [
       {
         type: "add",
-        path: "../src/hooks/{{camelCase name}}/{{camelCase name}}.ts",
-        templateFile: "Hook/hook.ts.hbs"
+        path: "../src/hooks/{{kebabCase name}}/{{kebabCase name}}.ts",
+        templateFile: "hook/hook.ts.hbs"
       },
       {
         type: "add",
-        path: "../src/hooks/{{camelCase name}}/{{camelCase name}}.test.js",
-        templateFile: "Hook/hook.test.js.hbs"
+        path: "../src/hooks/{{kebabCase name}}/{{kebabCase name}}.test.js",
+        templateFile: "hook/hook.test.js.hbs"
       },
       {
         type: "add",
-        path: "../src/hooks/{{camelCase name}}/index.js",
+        path: "../src/hooks/{{kebabCase name}}/index.js",
         templateFile: "injectable-index.js.hbs",
         skipIfExists: true
       },
       {
         type: "append",
-        path: "../src/hooks/{{camelCase name}}/index.js",
+        path: "../src/hooks/{{kebabCase name}}/index.js",
         pattern: `/* PLOP_INJECT_IMPORT */`,
-        template: `import {{camelCase name}} from './{{camelCase name}}';`
+        template: `import {{kebabCase name}} from './{{kebabCase name}}';`
       },
       {
         type: "append",
-        path: "../src/hooks/{{camelCase name}}/index.js",
+        path: "../src/hooks/{{kebabCase name}}/index.js",
         pattern: `/* PLOP_INJECT_EXPORT */`,
-        template: `\t{{camelCase name}},`
+        template: `\t{{kebabCase name}},`
       },
       {
         type: "add",
@@ -188,13 +188,13 @@ function hookGenerator(plop) {
         type: "append",
         path: "../src/hooks/index.js",
         pattern: `/* PLOP_INJECT_IMPORT */`,
-        template: `import {{camelCase name}} from './{{camelCase name}}';`
+        template: `import {{kebabCase name}} from './{{kebabCase name}}';`
       },
       {
         type: "append",
         path: "../src/hooks/index.js",
         pattern: `/* PLOP_INJECT_EXPORT */`,
-        template: `\t{{camelCase name}},`
+        template: `\t{{kebabCase name}},`
       }
     ]
   });
