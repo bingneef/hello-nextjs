@@ -114,7 +114,7 @@ function serviceGenerator(plop) {
         type: "append",
         path: "../src/services/{{kebabCase name}}/index.js",
         pattern: `/* PLOP_INJECT_IMPORT */`,
-        template: `import {{pascalCase name}} from "./{{kebabCase name}}";`
+        template: 'import {{pascalCase name}} from "./{{kebabCase name}}";'
       },
       {
         type: "append",
@@ -132,7 +132,7 @@ function serviceGenerator(plop) {
         type: "append",
         path: "../src/services/index.js",
         pattern: `/* PLOP_INJECT_IMPORT */`,
-        template: `import {{pascalCase name}} from "./{{pascalCase name}}";`
+        template: 'import {{pascalCase name}} from "./{{pascalCase name}}";'
       },
       {
         type: "append",
@@ -193,13 +193,13 @@ function hookGenerator(plop) {
         type: "append",
         path: "../src/hooks/index.js",
         pattern: `/* PLOP_INJECT_IMPORT */`,
-        template: `import {{kebabCase name}} from "./{{kebabCase name}}";`
+        template: 'import {{kebabCase name}} from "./{{kebabCase name}}";'
       },
       {
         type: "append",
         path: "../src/hooks/index.js",
         pattern: `/* PLOP_INJECT_EXPORT */`,
-        template: `\t{{kebabCase name}},`
+        template: "\t{{kebabCase name}},"
       }
     ]
   });
