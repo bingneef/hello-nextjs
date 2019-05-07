@@ -1,13 +1,12 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styles from "./bouk.module.scss";
 
-function Bouk ({ title }: Props) {
+function Bouk({ title }: Props) {
   return <div className={styles.root}>{title}</div>;
-};
+}
 
 interface Props {
-  title?: String;
+  title?: string;
 }
 
 Bouk.defaultProps = {

@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styles from "./bing.module.scss";
 
 function Bing({ title }: Props) {
@@ -7,7 +6,7 @@ function Bing({ title }: Props) {
 }
 
 interface Props {
-  title?: String;
+  title?: string;
 }
 
 Bing.defaultProps = {

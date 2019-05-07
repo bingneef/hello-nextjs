@@ -19,6 +19,11 @@ function generateComponentActions({ pages = false }) {
     },
     {
       type: "add",
+      path: `../src/${rootUrl}/{{kebabCase name}}/{{kebabCase name}}.module.scss.d.ts`,
+      templateFile: "component/component.module.scss.d.ts.hbs"
+    },
+    {
+      type: "add",
       path: `../src/${rootUrl}/{{kebabCase name}}/index.js`,
       templateFile: "component/index.js.hbs"
     },
