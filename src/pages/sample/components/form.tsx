@@ -3,9 +3,6 @@ import { createComponent } from "effector-react";
 import store, { decrement, increment, resetCounter } from "./store";
 
 const Counter = createComponent(store, (props, counter) => {
-  // tslint:disable-next-line: no-console
-  console.log(props);
-
   function _increment() {
     increment();
   }

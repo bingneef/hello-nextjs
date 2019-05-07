@@ -15,6 +15,7 @@ jobs:
   include:
     - stage: test
       script: yarn test
+    - script: yarn typecheck
     - script: yarn prettier:check
     - script: yarn lint
     - stage: build

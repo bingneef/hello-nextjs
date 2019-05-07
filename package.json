@@ -14,6 +14,7 @@
     "test:coveralls": "yarn test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "prettier:check": "prettier --check 'src/**/*.{tsx,ts,js}' 'pages/**/*.{tsx,ts,js}'",
     "prettier:fix": "prettier --write 'src/**/*.{tsx,ts,js}' 'pages/**/*.{tsx,ts,js}'",
+    "typecheck": "tsc",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "lint:fix": "yarn lint --fix"
   },
@@ -25,6 +26,7 @@
     "baseui": "^6.16.0",
     "effector": "^0.18.6",
     "effector-react": "^0.18.9",
+    "isomorphic-unfetch": "^3.0.0",
     "jest": "^24.7.1",
     "next": "8.0.3",
     "now": "^15.1.0",

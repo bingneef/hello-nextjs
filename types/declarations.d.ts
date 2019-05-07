@@ -1,2 +1,2 @@
 declare module "baseui/button";
-declare module "@types/styletron-engine-atomic";
+declare module "styletron-engine-atomic";
