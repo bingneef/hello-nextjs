@@ -12,7 +12,7 @@ describe("Sample", () => {
   });
 
   it("matches the snapshot", () => {
-    const component = renderer.create(<Sample title="Sample" />);
+    const component = renderer.create(<Sample title="Sample" stars={2} />);
 
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

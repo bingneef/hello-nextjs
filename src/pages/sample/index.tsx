@@ -8,7 +8,7 @@ const Colored = styled("div", ({ $theme }: any) => ({
   color: $theme.colors.primary
 }));
 
-function Sample({ title, stars }: Props) {
+function Sample({ stars, title }: Props) {
   return (
     <>
       <Colored>
@@ -26,6 +26,8 @@ Sample.getInitialProps = async () => {
   const res = await fetch("https://api.github.com/repos/developit/preact");
   const json = await res.json();
 
+  console.log(json);
+
   return { stars: json.stargazers_count };
 };
 
@@ -35,8 +37,8 @@ interface Props {
 }
 
 Sample.defaultProps = {
-  title: "Sample",
-  stars: null
+  stars: 0,
+  title: "Sample"
 };
 
 Sample.propTypes = {};

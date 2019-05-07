@@ -2,7 +2,7 @@ import { createComponent } from "effector-react";
 
 import store, { decrement, increment, resetCounter } from "./store";
 
-const Counter = createComponent(store, (props, counter) => {
+const Counter = createComponent(store, ({ counter }: Props) => {
   function _increment() {
     increment();
   }
@@ -24,5 +24,9 @@ const Counter = createComponent(store, (props, counter) => {
     </>
   );
 });
+
+interface Props {
+  counter: number;
+}
 
 export default Counter;

@@ -7,10 +7,9 @@ Array [
   >
     Sample
      - 
+    2
   </div>,
-  <div>
-    0
-  </div>,
+  <div />,
   <button
     onClick={[Function]}
   >
