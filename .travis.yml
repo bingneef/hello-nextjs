@@ -21,6 +21,7 @@ jobs:
     - stage: build
       script: yarn build
     - stage: build docker
+      script: skip
       deploy:
         provider: script
         script: bash server/test.sh
